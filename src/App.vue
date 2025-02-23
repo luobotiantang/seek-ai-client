@@ -14,8 +14,6 @@
         <el-table-column prop="amount" label="总金额" />
         <el-table-column prop="startDate" label="生效日期" />
         <el-table-column prop="endDate" label="截止日期" />
-        <el-table-column prop="refundAmount" label="退款金额" />
-        <el-table-column prop="refundDate" label="退款日期" />
         <el-table-column prop="policyStatus" label="状态" >
           <template #default="scope">
             {{ scope.row.policyStatus === "CONFIRMED" ? "✅" : "❌"}}
@@ -101,7 +99,7 @@ export default {
       );
 
       // sse: 服务端推送 Server-Sent Events
-      eventSource = new EventSource(`http://localhost:8080/ai/generateStreamAsString?message=${msg.value}`);
+      eventSource = new EventSource(`http://localhost:8080/ai/streamAsString?message=${msg.value}`);
       msg.value='';
       eventSource.onmessage = (event) => {
         if (event.data === '[complete]') {
