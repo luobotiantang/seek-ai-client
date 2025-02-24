@@ -99,7 +99,7 @@ export default {
       );
 
       // sse: 服务端推送 Server-Sent Events
-      eventSource = new EventSource(`http://localhost:8080/ai/streamAsString?message=${msg.value}`);
+      eventSource = new EventSource(`http://localhost:8080/ali/ai/streamAsString?message=${msg.value}`);
       msg.value='';
       eventSource.onmessage = (event) => {
         if (event.data === '[complete]') {
